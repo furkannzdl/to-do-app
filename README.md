@@ -9,6 +9,7 @@ A full-stack Todo application built with React, Express.js, TypeScript, PostgreS
 - User registration & login with JWT
 - Create, update, delete, and search todos
 - Pagination, filtering, and sorting
+- Search by title or description
 - PostgreSQL + Prisma ORM
 - Dockerized 
 - Swagger API docs: `/api-docs`
