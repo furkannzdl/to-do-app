@@ -1,6 +1,6 @@
 # 📝 Todo App
 
-A full-stack Todo application built with React, Express.js, TypeScript, PostgreSQL, and Prisma. The app supports JWT-based authentication, user-specific todo management, and is fully Dockerized for consistent cross-platform development.
+A full-stack Todo application built with React, Express.js, TypeScript, PostgreSQL, and Prisma. The app supports JWT-based authentication, user-specific todo management.
 
 ---
 
@@ -10,8 +10,10 @@ A full-stack Todo application built with React, Express.js, TypeScript, PostgreS
 - Create, update, delete, and search todos
 - Pagination, filtering, and sorting
 - PostgreSQL + Prisma ORM
-- Fully Dockerized (works on any machine)
+- Dockerized 
 - Swagger API docs: `/api-docs`
+- Dark/Light theme
+- Overdue display
 
 ---
 
@@ -51,9 +53,9 @@ docker compose up --build
 
 ---
 
-## 🛠️ Useful Commands
+## 🛠️ After Running Containers
 
-### Migrate & Generate Prisma Client (inside backend container)
+### Migrate & Generate Prisma Client (These commands should be executed one by one)
 
 ```bash
 docker exec -it to-do-app-main-backend-1 npx prisma migrate dev
@@ -62,11 +64,5 @@ docker exec -it to-do-app-main-backend-1 npx prisma generate
 
 ---
 
-## ⚠️ Troubleshooting
 
-- If the frontend/backend containers crash:
-  - Make sure your `.env` files are created and contain correct values.
-  - Run `docker system prune -af` to clean old layers if needed.
-
----
 
