@@ -1,7 +1,12 @@
 import express from 'express';
-import { getAllTodos, createTodoHandler, deleteTodoHandler, updateTodoHandler } from '../controllers/todoController.ts';  // Import the controller methods
+import { getAllTodos, createTodoHandler, deleteTodoHandler, updateTodoHandler } from '../controllers/todoController';
+import { authenticateToken } from '../Middleware/authMiddleware';
+
+
 
 const router = express.Router();
+
+router.use(authenticateToken); 
 
 router.get('/', getAllTodos); // Get all todos with pagination
 router.post('/', createTodoHandler); // Create a new todo

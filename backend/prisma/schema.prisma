@@ -1,6 +1,9 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x", "debian-openssl-3.0.x"]
 }
+
+
 
 datasource db {
   provider = "postgresql"
@@ -13,9 +16,18 @@ model Todo {
   description   String
   status        String   @default("Pending")
   priority      String?
-  priorityLevel Int?     // 👈 yeni alan
+  priorityLevel Int?     
   dueDate       DateTime?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id]) 
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String
+  todos    Todo[]   
 }
 

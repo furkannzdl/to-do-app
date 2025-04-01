@@ -1,4 +1,4 @@
-import prisma from '../prisma.ts';
+import prisma from '../prisma';
 
 // Priority'ye göre sayısal değer döner
 const getPriorityLevel = (priority: string): number => {
@@ -73,6 +73,7 @@ export const getPaginatedTodos = async (page: number, limit: number, search: str
   };
 
   export const createTodo = async (
+    userId: number,
     title: string,
     description: string,
     status: string,
@@ -82,6 +83,7 @@ export const getPaginatedTodos = async (page: number, limit: number, search: str
     try {
       const todo = await prisma.todo.create({
         data: {
+          userId,
           title,
           description,
           status: status || 'Pending',
@@ -141,6 +143,7 @@ export const updateTodo = async (
 
 // Add support for search, filter, and pagination
 export const getTodosBySearchAndFilter = async (
+    userId: number,
     page: number,
     limit: number,
     search: string,
@@ -151,7 +154,9 @@ export const getTodosBySearchAndFilter = async (
   ) => {
     const skip = (page - 1) * limit;
   
-    const whereConditions: any = {};
+    const whereConditions: any = {
+      userId, 
+    };
   
     if (search) {
       whereConditions.OR = [
