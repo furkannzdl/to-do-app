@@ -7,7 +7,4 @@ RUN npm install --legacy-peer-deps
 
 COPY backend .
 
-# Prisma ile migration ve ardından server'ı başlat
-CMD npx prisma generate \
-  && npx prisma migrate deploy \
-  && npx ts-node src/index.ts
+CMD ["sh", "-c", "npx prisma generate && npx ts-node src/index.ts"]
